@@ -2,39 +2,77 @@
 
 ## 安裝步驟
 
-1. 修改/etc/NetworkManager/NetworkManager.conf 的managed 參數。
-```shell=
-$sudo nano /etc/NetworkManager/NetworkManager.conf
-```
-![](https://i.imgur.com/Jy8yHZX.png)
 
-2. 重新啟動
+:::danger
+必須設定雙網卡 :
+![](https://i.imgur.com/qKADV9J.png)
+:::
+1. 網路卡命名為eth0...
 ```shell=
-$sudo reboot now
+ $sudo nano /etc/default/grub
+```
+:::info
+GRUB_CMDLINE_LINUX="" >> 「GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"
+:::
+
+2. 刷新且更新
+```shell=
+ $sudo grub-mkconfig -o /boot/grub/grub.cfg
+ $sudo update-grub
 ```
 
-3. 修改/etc/network/interfaces檔案,設定靜態IP
+3. 確認/etc/NetworkManager/NetworkManager.conf 中之 managed=false
+```shell=
+ $cat /etc/NetworkManager/NetworkManager.conf
+```
+
+
+4. 修改"/etc/sysctl.conf"，將# net.ipv4.ip_forward=1此行的# (註解)拿掉
+```shell=
+ $sudo nano /etc/sysctl.conf
+```
+
+5. 將"/proc/sys/net/ipv4/ip_forward"的值修改為1
+```shell=
+ $sudo nano /proc/sys/net/ipv4/ip_forward
+```
+
+6. 修改/etc/network/interfaces檔案,設定靜態IP
 ```shell=
 $sudo nano /etc/network/interfaces
 ```
 ```shell=
+auto lo
+iface lo inet loopback
+
 auto eth0
-iface eth0 inet static 
-address 192.168.137.10
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+address 192.168.137.11
 netmask 255.255.255.0
-gateway 192.168.137.1
-dns-nameservers 8.8.8.8
+network 192.168.137.0
+broadcast 192.168.137.255
+
+
 ```
-![](https://i.imgur.com/wtGxBvU.png)
+![](https://i.imgur.com/jfTJsiD.png)
 
 
 
-4. 重新啟動服務
+
+7. 修改host檔案
 ```shell=
-$sudo service network-manager restart
+ $sudo nano /etc/hosts
 ```
 
-5. 測試結果
+8. 重啟
+```shell=
+ $reboot
+```
+
+## 測試結果
 ![](https://i.imgur.com/8UQrlGx.png)
 
 
