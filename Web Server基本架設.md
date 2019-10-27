@@ -44,12 +44,16 @@ from:http://ccckmit.wikidot.com/code:webserver
 1. 安全設定 
     * 避免網頁被讀取
         設定/etc/apache2/apache2.conf 
+        ```shell=
+         $sudo nano /etc/apache2/apache2.conf 
+        ```
+        
         移除<Directory / > 和 </Directory> 中間的indexes字眼!
         ![](https://i.imgur.com/3e05UHu.png)
     * 移除網頁伺服器資訊
         修改/etc/apache2/conf-available/localized-error-pages.conf
         ```shell
-            $sudo vi /etc/apache2/conf-available/localized-error-pages.conf
+            $sudo nano /etc/apache2/conf-available/localized-error-pages.conf
         ```
         設定ErrorDocument 403 內容
         ![](https://i.imgur.com/qzypRn7.png)
