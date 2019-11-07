@@ -33,19 +33,51 @@ FTP是一個8位的客戶端-伺服器協議，能操作任何類型的文件而
 ```
 :::
 
-2. 編輯/etc/vsftpd.conf
+2. 查看是否啟動成功
+```shell=
+ $sudo service vsftpd status
+```
+![](https://i.imgur.com/w4z1rKY.png)
+
+:::danger
+假設出現Active: failed (Result: exit-code) since Sat 2018-11-03 20:36:08 CST; 1min 53s ago錯誤
+輸入以下指令:
+```shell=
+ $sudo openssl req -x509 -nodes -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem -days 365 -newkey rsa:2048
+ $sudo service vsftpd restart
+```
+:::
+
+
+3. 編輯/etc/vsftpd.conf
 ```shell=
  $sudo nano /etc/vsftpd.conf
 ```
 ```shell=
 local_enable=YES 
 write_enable=YES
+local_umask=000
 chroot_local_user=YES
 chroot_list_enable=YES 
 chroot_list_file=/etc/vsftpd.chroot_list #一列只能列一個使用者
 ```
 
-3. 重啟server
+
+4. 建立/etc/vsftpd.chroot_list檔案
+```shell=
+ $sudo nano /etc/vsftpd.chroot_list
+```
+:::danger
+在裡面新增你要的使用者，一行一個使用者
+:::
+
+5. 設定檔案夾權限
+```shell=
+ $sudo chown 使用者名:ftp -R 想要ftp可以使用的目錄  
+```
+
+
+5. 重啟server
 ```shell=
  $sudo /etc/init.d/vsftpd restart
 ```
@@ -58,3 +90,4 @@ chroot_list_file=/etc/vsftpd.chroot_list #一列只能列一個使用者
 
 ## 來源
 - http://irw.ncut.edu.tw/peterju/course/network/971/doc/homework/02/FTP.htm
+- https://www.itread01.com/ycfxi.html
