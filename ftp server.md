@@ -91,3 +91,4 @@ chroot_list_file=/etc/vsftpd.chroot_list #一列只能列一個使用者
 ## 來源
 - http://irw.ncut.edu.tw/peterju/course/network/971/doc/homework/02/FTP.htm
 - https://www.itread01.com/ycfxi.html
+- https://oranwind.org/-ftp-ubuntu-an-zhuang-ftp-yu-she-ding-apache-du-qu-quan-xian/
