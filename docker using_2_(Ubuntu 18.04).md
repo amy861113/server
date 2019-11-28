@@ -67,9 +67,10 @@
  $docker rmi <image name or id>
 ```
 
-10. 查看container詳細資訊(它會列出json格式的資料，可以用--format去擷取你要的資料)
+10. 查看container詳細資訊(它會列出json格式的資料，可以用 --format(-f)去擷取你要的資料)
 ```shell=
  $docker inspect <container id or name>
+ $docker inspect -f '{{json .Metadata}}' nginx
 ```
 
 11. 查看詳細image資訊
