@@ -12,6 +12,7 @@
  $docker images
 ```
 ![](https://i.imgur.com/xlayYEU.png)
+
 :::info
 對新產生的image下文字註解介紹(-m)or作者聯絡資訊(-a)
 ```shell=
