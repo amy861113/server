@@ -18,6 +18,10 @@
 ```shell=
     $sudo nano /etc/xrdp/startwm.sh
 ```
+```shell=
+xfce4-session
+. /etc/X11/Xsession
+```
 ![](https://i.imgur.com/t0FwBQx.png)
 
 
