@@ -1,6 +1,6 @@
 # docker using<2>(Ubuntu 18.04)
 
-## 安裝步驟
+## 指令
 
 1. 查看執行中的container
 ```shell=

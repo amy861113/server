@@ -1,6 +1,6 @@
 # docker using<1>(Ubuntu 18.04)
 
-## 安裝步驟
+## 指令
 
 1. 搜尋需要的映像檔
 ```shell=

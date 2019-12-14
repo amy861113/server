@@ -1,6 +1,6 @@
 # 自製docker image
 
-## 安裝步驟
+## 操作步驟
 
 1. 從運行中的container產生新的image(如:nginx)
 ```shell=

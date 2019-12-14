@@ -1,6 +1,6 @@
 # docker 進階using<1>(Ubuntu 18.04)
 
-## 安裝步驟
+## 指令
 
 1. 幫container取名字
 ```shell=
